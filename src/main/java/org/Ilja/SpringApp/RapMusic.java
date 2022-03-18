@@ -6,22 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class ClassicalMusic implements Music{
+public class RapMusic implements Music {
 
     private List<String> songs = new ArrayList<>();
 
     {
-        songs.add("Hungarian Rhapsody");
-        songs.add("O Fortuna");
-        songs.add("Night on Bad Mountain");
+        songs.add("Don't Play That");
+        songs.add("Nail Tech");
+        songs.add("Ghetto Gospel");
     }
-
 
     @Override
-    public List<String> getSong(){
+    public List<String> getSong() {
         return songs;
     }
-
-
-
 }

@@ -1,8 +1,24 @@
 package org.Ilja.SpringApp;
 
-public class RockMusic implements Music{
+import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+@Component
+public class RockMusic implements Music {
+
+    private List<String> songs = new ArrayList<>();
+
+    {
+        songs.add("Rock and Roll");
+        songs.add("Barracuda");
+        songs.add("Purple Haze");
+    }
+
     @Override
-    public String getSong() {
-        return "Wind cries Mary";
+    public List<String> getSong() {
+        return songs;
     }
 }
