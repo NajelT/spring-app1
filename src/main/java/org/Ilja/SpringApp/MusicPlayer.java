@@ -1,39 +1,46 @@
 package org.Ilja.SpringApp;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.Ilja.SpringApp.genres.MusicGenre;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Value;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
-@Component
-public class MusicPlayer {
-    private Music rockMusic;
-    private Music classicalMusic;
-    private Music rapMusic;
 
-    @Autowired
-    public MusicPlayer(@Qualifier("rockMusic") Music rockMusic,
-                       @Qualifier("classicalMusic") Music classicalMusic,
-                       @Qualifier("rapMusic") Music rapMusic) {
-        this.rockMusic = rockMusic;
-        this.classicalMusic = classicalMusic;
-        this.rapMusic = rapMusic;
+public class MusicPlayer {
+
+    @Value("${musicPlayer.name}")
+    private String name;
+    @Value("${musicPlayer.volume}")
+    private int volume;
+
+//    private Music rockMusic;
+//    private Music classicalMusic;
+//    private Music rapMusic;
+//    private Music jazzMusic;
+
+    private List<Music> musicList;
+
+
+    public MusicPlayer(List<Music> musicList){
+        this.musicList = musicList;
     }
 
+    public String getName() {
+        return name;
+    }
 
-    public void playMusic(MusicGenre genre) {
+    public int getVolume() {
+        return volume;
+    }
+
+    public String playMusic() {
         Random random = new Random();
-        int randomNum = random.nextInt(3);
 
-        if(genre == MusicGenre.RAP){
-            System.out.println(rapMusic.getSong().get(randomNum));
-        } else if (genre == MusicGenre.ROCK) {
-            System.out.println(rockMusic.getSong().get(randomNum));
-        } else {
-            System.out.println(classicalMusic.getSong().get(randomNum));
-        }
-
+        return "Playing: " + musicList.get(random.nextInt(musicList.size())).getSong()
+                + " with volume " + this.volume;
     }
 }
 

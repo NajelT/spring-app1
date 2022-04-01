@@ -1,11 +1,12 @@
-package org.Ilja.SpringApp;
+package org.Ilja.SpringApp.genres;
 
+import org.Ilja.SpringApp.Music;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+
 public class RapMusic implements Music {
 
     private List<String> songs = new ArrayList<>();
@@ -17,7 +18,7 @@ public class RapMusic implements Music {
     }
 
     @Override
-    public List<String> getSong() {
-        return songs;
+    public String getSong() {
+        return "Don't Play That";
     }
 }
